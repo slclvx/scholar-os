@@ -23,9 +23,12 @@ import ProjectsPage from './components/projects/ProjectsPage';
 import CalendarPage from './components/calendar/CalendarPage';
 import AnalyticsPage from './components/analytics/AnalyticsPage';
 import SearchPage from './components/shared/SearchPage';
+import SchedulePage from './components/schedule/SchedulePage';
+import { useClassChangeNotifications } from './hooks/useClassChangeNotifications';
 
 const PAGES = {
   dashboard: DashboardPage,
+  schedule: SchedulePage,
   assignments: AssignmentsPage,
   exams: ExamsPage,
   classes: ClassesPage,
@@ -54,6 +57,7 @@ const PAGES = {
 
 export default function App() {
   const { theme, activeSection, sidebarOpen } = useUI();
+  useClassChangeNotifications();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
